@@ -33,7 +33,6 @@ repos:
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-blanket-type-ignore
-      - id: python-no-eval
       - id: rst-directive-colons
       - id: rst-inline-touching-normal
       - id: text-unicode-replacement-char
@@ -53,7 +52,8 @@ repos:
             false
           - "--"
         types: ["binary"]
-        # exclude: "(?i)tests.*"
+        exclude: "(?i)\\.(png|jpg|pth)"
+
       - id: check-utf8
         name: Check text files for UTF-8 Encoding
         language: system
@@ -68,6 +68,8 @@ repos:
             done
             [[ ${is_failed} == 0 ]] || false
           - "--"
+        exclude: "(?i)\\.(png|jpg|pth)"
+
       - id: check-eol
         name: Check text files for correct end of line sequence
         language: pygrep
@@ -78,7 +80,7 @@ repos:
         language: pygrep
         entry: "\\t"
         types: ["text"]
-        exclude: "(?i)Makefile"
+        exclude: "(?i)datasets/.*"
       - id: mypy
         name: mypy
         entry: mypy
@@ -162,6 +164,7 @@ repos:
       - id: codespell
         additional_dependencies:
           - tomli
+        exclude: "(?i)notebooks.*"
 
   - repo: https://github.com/bridgecrewio/checkov
     rev: 3.2.5

@@ -164,7 +164,7 @@ class BaseBenchmark:
 
 
 class BenchmarkGrenolNet(BaseBenchmark):
-    """Benchmark class to furher evaluate our model outputs."""
+    """Benchmark class to further evaluate our model outputs."""
 
     def __init__(
         self, model_name: str, dataset: str, hemisphere: str, cortical_feature: int = 0

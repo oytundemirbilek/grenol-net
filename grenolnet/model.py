@@ -1,5 +1,7 @@
 """Module to define neural network, which is our solution."""
 
+from __future__ import annotations
+
 import math
 
 import torch
@@ -13,11 +15,12 @@ from torch_geometric.nn import Sequential as PygSequential
 class SinusoidalPositionEmbeddings(Module):
     """Class to define network that learns the timestep embedding."""
 
-    def __init__(self, dim: int, device: str | None = None) -> None:
+    def __init__(self, dim: int) -> None:
         super().__init__()
         self.dim = dim
 
     def forward(self, time: Tensor) -> Tensor:
+        """Run forward pass."""
         device = time.device
         half_dim = self.dim // 2
         emb_vals = math.log(10000) / (half_dim - 1)
