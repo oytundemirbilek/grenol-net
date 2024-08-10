@@ -97,7 +97,7 @@ Grenol-Net output is a torch-geometric graph object as prediction. This object u
     :alt: Helmholtz Zentrum München
     :height: 80px
 
-    |itu-logo|    |helmholtz-logo|
+|itu-logo|    |helmholtz-logo|
 
 Citation
 --------
