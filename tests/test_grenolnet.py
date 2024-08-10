@@ -1,5 +1,7 @@
 """Test graph dataset classes."""
 
+from __future__ import annotations
+
 import os
 
 import torch
