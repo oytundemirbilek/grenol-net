@@ -158,7 +158,6 @@ def test_inferer() -> None:
     current_results = inferer.run("test")
     assert "frobenius" in current_results
     assert "edges_mse" in current_results
-
     cuda_results = torch.load(
         os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cuda.pth"),
         weights_only=False,
@@ -167,9 +166,5 @@ def test_inferer() -> None:
         os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cpu.pth"),
         weights_only=False,
     )
-    # torch.save(
-    #     current_results["frobenius"],
-    #     os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cpu.pth"),
-    # )
     assert torch.equal(current_results["frobenius"], cpu_results)
     # assert torch.isclose(results["frobenius"], cuda_results, rtol=0.01).all()
