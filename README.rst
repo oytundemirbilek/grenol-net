@@ -27,8 +27,8 @@ This repository provides the official PyTorch implementation of the following pa
     :alt: Grenol-Net
 
 
-This work is accepted for publication in 6th Workshop on GRaphs in biomedicAl Image anaLysis (GRAIL 2024), Marakesh, Morocco. Grenol-Net is a
-geometric deep learning framework for predicting a target brain graph from the source. Using a generative learning fashion, it preserves the
+This work is accepted for publication in 6th Workshop on GRaphs in biomedicAl Image anaLysis (GRAIL 2024), Marakesh, Morocco, a MICCAI sattelite event. 
+Grenol-Net is a geometric deep learning framework for predicting a target brain graph from the source. Using a generative learning fashion, it preserves the
 topological structure of each target graph.
 
 We have evaluated our method on 3 datasets:
@@ -50,18 +50,48 @@ Installation
 ------------
 
 The code has been written in Python 3.10, torch==1.13.1 and torch-geometric==2.3.0 on Ubuntu 22.04 Windows Subsystem Linux (WSL).
-GPU is not required to run the code but it is recommended, and tested on CUDA compiler version 11.5. If you prefer another torch version, you need to
-install torch-geometric matching with your torch version. You also need other dependencies listed in ``requirements.txt``. All can be installed via::
+GPU is not required to run the code but it is recommended, and pretrained model trained on CUDA compiler version 11.5. The model is tested on:
 
-  $ pip install -r requirements.txt
+- python 3.8, 3.9, 3.10, 3.11, 3.12
+- major pytorch versions: v1.11.0, v1.12.1, v1.13.1, v2.0.1, v2.1.2, v2.2.2, v2.3.1 and latest.
+- latest version of operating systems: windows, ubuntu and macos
+
+Please also keep in mind that using CPU on Windows operating system might lead to slightly different results for the first a couple of epochs.
+
+You also need other dependencies listed in ``pyproject.toml``. All can be installed via::
+
+  $ pip install .
 
 Training and testing
 --------------------
 
 We provide an entrypoint for the experiments, which is parameterized in ``grenolnet/__main__.py``. Since there are many parameters regarding the experiments,
-we decided to not provide argument parsing. You can set your desired parameters in ``__main__.py`` and then run::
+we decided to not provide argument parsing for some low-level parameters to maintain simplicity. You can change them if it's necessary in ``__main__.py`` and then run::
 
-  $ python -m grenolnet
+  $ python -m grenolnet --train
+
+The above command will only train a model with default name and default parameters. To change the dataset to openneuro and right hemisphere, you can type:
+
+  $ python -m grenolnet --train --dataset openneuro --hem right
+
+You can give a name to your model to differ it from other models, use something specific like:
+
+  $ python -m grenolnet --train --dataset openneuro --hem right --model-name op_right_retrain
+
+To specify your preferred device:
+
+  $ python -m grenolnet --train --device cuda
+
+We provide many pretrained models to enable them for a later use, you can use a trained model with:
+
+  $ python -m grenolnet --infer --load-model --model-name op_right_retrain --dataset openneuro --hem right
+
+You can test the same model on different datasets also, for example testing a model trained on openneuro using the hcp dataset:
+
+  $ python -m grenolnet --infer --load-model --model-name op_right_retrain --dataset hcp --hem right
+
+Note that this also makes it easier to adapt your own dataset to make it usable with our model. For further information, please also check
+our brain graph processing package: `(avicortex) <https://github.com/oytundemirbilek/avicortex>`_
 
 We provide a benchmarking module in ``grenolnet/benchmarking.py``, which collects all predictions and targets from the ``benchmarks`` folder and calculates
 all the metrics subject-wise. Then these subject-wise results can be plotted by running ``grenolnet/plotting.py`` file to create the boxplots.
@@ -89,15 +119,18 @@ Grenol-Net output is a torch-geometric graph object as prediction. This object u
 - edge features (n_nodes x n_nodes, n_features) which in our case is (1156, 1)
 - adjacency matrix (n_nodes, n_nodes, n_features) which in our case is (34, 34, 1)
 
-.. |itu-logo| image:: ./figures/itu_logo_black.png
-    :alt: Istanbul Technical University
-    :height: 80px
+.. list-table::
+   :width: 100%
+   :class: borderless
 
-.. |helmholtz-logo| image:: ./figures/helmholtz_logo.jpg
-    :alt: Helmholtz Zentrum München
-    :height: 80px
+   * - .. image:: ./figures/itu_logo_black.jpg
+          :alt: Istanbul Technical University
+          :height: 80px
 
-|itu-logo|    |helmholtz-logo|
+     - .. image:: ./figures/helmholtz_logo.png
+          :alt: Helmholtz Zentrum München
+          :height: 80px
+         
 
 Citation
 --------
