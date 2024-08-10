@@ -167,7 +167,7 @@ def test_inferer() -> None:
         os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cpu.pth"),
         weights_only=False,
     )
-    assert cuda_results
+    assert cuda_results is not None
     assert cuda_results.get_device() == -1  # -1 is cpu
     assert torch.equal(current_results["frobenius"], cpu_results)
     # assert torch.isclose(results["frobenius"], cuda_results, rtol=0.01).all()
