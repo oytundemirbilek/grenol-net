@@ -204,5 +204,9 @@ class BaseInferer:
         model = GrenolNet(**model_params).to(device)
         if not model_path.endswith(".pth"):
             model_path += ".pth"
-        model.load_state_dict(torch.load(model_path, weights_only=False))
+        model.load_state_dict(
+            torch.load(
+                model_path, weights_only=False, map_location=torch.device(device)
+            )
+        )
         return model
