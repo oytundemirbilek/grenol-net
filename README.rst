@@ -91,9 +91,11 @@ Grenol-Net output is a torch-geometric graph object as prediction. This object u
 
 .. |itu-logo| image:: ./figures/itu_logo_black.png
     :alt: Istanbul Technical University
+    :height: 20px
 
 .. |helmholtz-logo| image:: ./figures/helmholtz_logo.jpg
     :alt: Helmholtz Zentrum München
+    :height: 20px
 
 |itu-logo| |helmholtz-logo|
 
