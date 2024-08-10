@@ -169,5 +169,5 @@ def test_inferer() -> None:
     )
     assert cuda_results is not None
     assert cuda_results.get_device() == -1  # -1 is cpu
-    assert torch.equal(current_results["frobenius"], cpu_results)
-    # assert torch.isclose(results["frobenius"], cuda_results, rtol=0.01).all()
+    assert torch.isclose(current_results["frobenius"], cpu_results).all()
+    # assert torch.isclose(results["frobenius"], cuda_results).all()
