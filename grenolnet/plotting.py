@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from avicortex.datasets import GraphDataset
+from matplotlib.axes import Axes
 from torch_geometric.data import Data as PygData
 
 
@@ -31,7 +32,10 @@ def plot_graph_adjacency(
     else:
         _fig, axes = plt.subplots(1, n_plots)
 
-    for ax, g, title in zip(axes, g_matrices, titles):
+    if isinstance(axes, Axes):
+        axes = np.array([axes])
+
+    for ax, g, title in zip(axes, g_matrices, titles, strict=False):
         ax.matshow(g)
         ax.title.set_text(title)
         ax.set_axis_off()

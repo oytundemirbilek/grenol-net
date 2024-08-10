@@ -58,7 +58,7 @@ class BaseInferer:
     ) -> None:
         self.device = device
         if device is None:
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            self.device = "cuda" if torch.cuda.is_available() else "cpu"
         np.random.seed(random_seed)
         torch.manual_seed(random_seed)
         self.model_path = model_path
@@ -191,8 +191,8 @@ class BaseInferer:
     ) -> dict[str, Tensor]:
         test_losses_tensors: dict[str, Tensor] = {}
 
-        for key in losses:
-            test_losses_tensors[key] = torch.tensor(losses[key])
+        for key, value in losses.items():
+            test_losses_tensors[key] = torch.tensor(value)
 
         return test_losses_tensors
 
@@ -206,7 +206,9 @@ class BaseInferer:
             model_path += ".pth"
         model.load_state_dict(
             torch.load(
-                model_path, weights_only=False, map_location=torch.device(device)
+                model_path,
+                weights_only=False,
+                map_location=torch.device(device) if device is not None else None,
             )
         )
         return model
