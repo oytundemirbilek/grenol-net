@@ -70,23 +70,23 @@ we decided to not provide argument parsing for some low-level parameters to main
 
   $ python -m grenolnet --train
 
-The above command will only train a model with default name and default parameters. To change the dataset to openneuro and right hemisphere, you can type:
+The above command will only train a model with default name and default parameters. To change the dataset to openneuro and right hemisphere, you can type::
 
   $ python -m grenolnet --train --dataset openneuro --hem right
 
-You can give a name to your model to differ it from other models, use something specific like:
+You can give a name to your model to differ it from other models, use something specific like::
 
   $ python -m grenolnet --train --dataset openneuro --hem right --model-name op_right_retrain
 
-To specify your preferred device:
+To specify your preferred device::
 
   $ python -m grenolnet --train --device cuda
 
-We provide many pretrained models to enable them for a later use, you can use a trained model with:
+We provide many pretrained models to enable them for a later use, you can use a trained model with::
 
   $ python -m grenolnet --infer --load-model --model-name op_right_retrain --dataset openneuro --hem right
 
-You can test the same model on different datasets also, for example testing a model trained on openneuro using the hcp dataset:
+You can test the same model on different datasets also, for example testing a model trained on openneuro using the hcp dataset::
 
   $ python -m grenolnet --infer --load-model --model-name op_right_retrain --dataset hcp --hem right
 
