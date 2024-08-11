@@ -27,7 +27,7 @@ This repository provides the official PyTorch implementation of the following pa
     :alt: Grenol-Net
 
 
-This work is accepted for publication in 6th Workshop on GRaphs in biomedicAl Image anaLysis (GRAIL 2024), Marakesh, Morocco, a MICCAI satellite event. 
+This work is accepted for publication in 6th Workshop on GRaphs in biomedicAl Image anaLysis (GRAIL 2024), Marakesh, Morocco, a MICCAI satellite event.
 Grenol-Net is a geometric deep learning framework for predicting a target brain graph from the source. Using a generative learning fashion, it preserves the
 topological structure of each target graph.
 
