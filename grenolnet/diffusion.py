@@ -25,7 +25,7 @@ class DiffusionBase:
     ) -> None:
         self.device = device
         if device is None:
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
         self.step_count = step_count
         self.noise_schedule = noise_schedule

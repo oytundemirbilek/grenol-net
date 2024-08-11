@@ -1,5 +1,7 @@
 """Module to generalize statistical hypothesis testing."""
 
+from __future__ import annotations
+
 import os
 
 import numpy as np

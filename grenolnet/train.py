@@ -15,7 +15,7 @@ from avicortex.datasets import (
 )
 from torch.nn import Module
 from torch.nn.modules.loss import MSELoss, _Loss
-from torch.optim import AdamW
+from torch.optim import AdamW  # type: ignore[attr-defined]
 from torch_geometric.loader import DataLoader
 
 from grenolnet.diffusion import GraphDiffusion
@@ -51,7 +51,7 @@ DATASET_PATHS = {
 class BaseTrainer:
     """Wrapper around training function to save all the training parameters."""
 
-    def __init__(
+    def __init__(  # noqa: PLR0913, PLR0917
         self,
         # Data related:
         hemisphere: str,

@@ -8,7 +8,7 @@ import torch
 from networkx.algorithms import centrality
 from torch import Tensor
 from torch.nn import MSELoss
-from torch.nn.modules.loss import _Loss
+from torch.nn.modules.loss import _Loss  # noqa: PLC2701
 from torch_geometric.data import Data as PygData
 from torch_geometric.utils import to_networkx
 
@@ -101,7 +101,7 @@ def pearson_loss_regions(pred: Tensor, target: Tensor) -> float:
         )
         pear = r_num / r_den
         # pear_official = signal_corelation(gen_vec.numpy(), real_vec.numpy())
-        loss = loss + torch.pow(pear - 1.0, 2).item()
+        loss = loss + torch.pow(pear - 1.0, 2).item()  # noqa: PLR6104
     return loss
 
 
@@ -119,7 +119,7 @@ class Centrality(_Loss):
         self.batch_first = batch_first
         self.reduction = reduction
 
-    def forward(
+    def forward(  # noqa: PLR6301
         self,
         pred_data: PygData | np.ndarray,
         target_data: PygData | np.ndarray,

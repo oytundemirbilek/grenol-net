@@ -113,7 +113,7 @@ class BaseBenchmark:
         targets = self.get_target_filenames()
         predictions = self.get_prediction_filenames()
         all_metrics = []
-        for subject_pred, subject_tgt in zip(predictions, targets):
+        for subject_pred, subject_tgt in zip(predictions, targets, strict=False):
             pred = self.read_prediction(subject_pred)
             tgt = self.read_target(subject_tgt)
             if metric == "mse":
@@ -134,7 +134,7 @@ class BaseBenchmark:
                 pear = r_num / r_den
                 result = torch.pow(pear - 1.0, 2).mean()
             else:
-                ValueError("Metric not implemented!")
+                raise ValueError("Metric not implemented!")
             all_metrics.append(result)
 
         metric_results = pd.DataFrame(torch.stack(all_metrics).numpy())
@@ -164,7 +164,7 @@ class BaseBenchmark:
 
 
 class BenchmarkGrenolNet(BaseBenchmark):
-    """Benchmark class to furher evaluate our model outputs."""
+    """Benchmark class to further evaluate our model outputs."""
 
     def __init__(
         self, model_name: str, dataset: str, hemisphere: str, cortical_feature: int = 0
@@ -245,11 +245,11 @@ class BenchmarkHADA(BaseBenchmark):
         )
         return np.genfromtxt(pred_file_path, delimiter=",").tolist()[:42]
 
-    def read_target(self, tgt_subj: str) -> torch.Tensor:
+    def read_target(self, tgt_subj: str) -> torch.Tensor:  # noqa: PLR6301
         """Read a target subject from specified path and return as torch tensor."""
         return torch.from_numpy(GraphBuilder.anti_vectorize(tgt_subj, 34))
 
-    def read_prediction(self, pred_subj: str) -> torch.Tensor:
+    def read_prediction(self, pred_subj: str) -> torch.Tensor:  # noqa: PLR6301
         """Read a predictions subject from specified path and return as torch tensor."""
         return torch.from_numpy(GraphBuilder.anti_vectorize(pred_subj, 34))
 
