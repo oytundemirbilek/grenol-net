@@ -136,10 +136,8 @@ Citation
 
   @inproceedings{demirbilek2024grenol,
     title={Graph Residual Noise Learner Network for Brain Connectivity Graph Prediction},
-    author={Demirbilek, Oytun, },
-    booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-    pages={584--594},
+    author={Demirbilek, Oytun and Peng, Tingying and Bessadok, Alaa},
+    booktitle={6th Workshop on GRaphs in biomedicAl Image anaLysis},
     year={2024},
     organization={Springer},
-
   }
