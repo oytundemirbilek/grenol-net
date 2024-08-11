@@ -140,4 +140,5 @@ Citation
     booktitle={6th Workshop on GRaphs in biomedicAl Image anaLysis},
     year={2024},
     organization={Springer},
+
   }
