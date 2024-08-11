@@ -131,8 +131,6 @@ Grenol-Net output is a torch-geometric graph object as prediction. This object u
 | |itu-logo| | |helmholtz-logo| |
 +------------+------------------+
 
-         
-
 Citation
 --------
 
