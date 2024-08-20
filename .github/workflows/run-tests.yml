@@ -90,7 +90,7 @@ jobs:
       fail-fast: false
       matrix:
 
-        torch-vers: ['1.11.0', '1.12.1', '1.13.1', '2.0.1', '2.1.2', '2.2.2', '2.3.1', 'latest']
+        torch-vers: ['1.12.1', '1.13.1', '2.0.1', '2.1.2', '2.2.2', '2.3.1', 'latest']
 
     steps:
 
@@ -116,10 +116,6 @@ jobs:
             python -m pip install torch --upgrade --extra-index-url https://download.pytorch.org/whl/cpu
           else
             python -m pip install torch==${{ matrix.torch-vers }} --extra-index-url https://download.pytorch.org/whl/cpu
-          fi
-          if [ ${{ matrix.torch-vers }} == "1.11.0" ]; then
-            git clone https://github.com/rusty1s/pytorch_scatter.git
-            python setup.py install
           fi
 
       - name: Test with pytest
