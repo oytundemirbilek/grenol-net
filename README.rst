@@ -56,6 +56,10 @@ GPU is not required to run the code but it is recommended, and pretrained model 
 - major pytorch versions: v1.11.0, v1.12.1, v1.13.1, v2.0.1, v2.1.2, v2.2.2, v2.3.1 and latest.
 - latest version of operating systems: windows, ubuntu and macos
 
+Further remarks:
+- Numpy dependency is introduced as numpy<2 (numpy<=1.26.4) for torch<=2.2.2 to work. If you use a higher version of torch, you can use numpy>=2.0.0.
+- For torch 1.11.0 and older, it requires torch_scatter to be installed, but also having a buggy installation. You need to manually install it.
+
 Please also keep in mind that using CPU on Windows operating system might lead to slightly different results for the first a couple of epochs.
 
 You also need other dependencies listed in ``pyproject.toml``. All can be installed via::
