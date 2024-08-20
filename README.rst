@@ -53,7 +53,7 @@ The code has been written in Python 3.10, torch==1.13.1 and torch-geometric==2.3
 GPU is not required to run the code but it is recommended, and pretrained model trained on CUDA compiler version 11.5. The model is tested on:
 
 - python 3.8, 3.9, 3.10, 3.11, 3.12
-- major pytorch versions: v1.11.0, v1.12.1, v1.13.1, v2.0.1, v2.1.2, v2.2.2, v2.3.1 and latest.
+- major pytorch versions: v1.12.1, v1.13.1, v2.0.1, v2.1.2, v2.2.2, v2.3.1 and latest.
 - latest version of operating systems: windows, ubuntu and macos
 
 Please also keep in mind that using CPU on Windows operating system might lead to slightly different results for the first a couple of epochs.
@@ -61,6 +61,11 @@ Please also keep in mind that using CPU on Windows operating system might lead t
 You also need other dependencies listed in ``pyproject.toml``. All can be installed via::
 
   $ pip install .
+
+Further remarks about torch dependencies:
+
+- Numpy dependency is introduced as numpy<2 (numpy<=1.26.4) for torch<=2.2.2 to work. If you use a higher version of torch, you can use numpy>=2.0.0.
+- On windows and macos, the above command will install torch for cpu-only. On Linux, it will be cuda 12.1. Please follow the guidelines on `torch website <https://pytorch.org/get-started/locally/>`_
 
 Training and testing
 --------------------

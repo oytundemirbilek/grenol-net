@@ -207,7 +207,6 @@ class BaseInferer:
         model.load_state_dict(
             torch.load(
                 model_path,
-                weights_only=False,
                 map_location=torch.device(device) if device is not None else None,
             )
         )
