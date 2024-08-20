@@ -36,7 +36,6 @@ dependencies = [
     "scikit-learn",
     "torch",
     "torch_geometric",
-    "torch_scatter",
     "avicortex<=1.0.0",
     "matplotlib",
     "seaborn",
