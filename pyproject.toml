@@ -31,12 +31,12 @@ classifiers = [
 ]
 
 dependencies = [
-    "numpy",
+    "numpy<=1.26.4",
     "pandas",
     "scikit-learn",
     "torch",
-    "torchvision",
     "torch_geometric",
+    "torch_scatter",
     "avicortex<=1.0.0",
     "matplotlib",
     "seaborn",

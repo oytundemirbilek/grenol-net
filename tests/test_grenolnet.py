@@ -165,12 +165,10 @@ def test_inferer() -> None:
     assert "edges_mse" in current_results
     cuda_results = torch.load(
         os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cuda.pth"),
-        weights_only=False,
         map_location=torch.device("cpu"),
     )
     cpu_results = torch.load(
         os.path.join(GOLD_STANDARD_PATH, "subject_wise_frobenius_results_cpu.pth"),
-        weights_only=False,
     )
     assert cuda_results is not None
     assert cuda_results.get_device() == -1  # -1 is cpu
